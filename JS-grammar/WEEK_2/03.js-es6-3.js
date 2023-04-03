@@ -53,3 +53,38 @@ console.log(`
         my name is ${name1}.
         I am ${age1} years old.
 `);
+
+
+// 9. named export vs default export
+// default export
+// name.js
+const Name = () => {
+}
+
+export default Name
+
+// Under other files 
+// we can use any names to import:
+// import newName from "name.js"
+// import NameFromOtherModule from "name.js"
+
+// named export
+// we can export multiple functions/classes in one file
+
+export const Name1 = () => {
+}
+
+export const Name2 = () => {
+}
+
+// Under other files
+import {Name1, Name2} from "name.js"
+import {newName} from "name.js" // x
+
+// use alias to import in different names
+import {Name1 as newName, Name2} from "name.js"
+
+// use * to import like default export
+import * as NameModule from "name.js"
+
+console.log(NameModule.Name1)
