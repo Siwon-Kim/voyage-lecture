@@ -1,5 +1,5 @@
 // Type conversion
-// 1. Implicit conversion
+// 1. Implicit coercion
 // 1-1. String
 let result1 = 1 + "2";
 console.log(result1); // 12
@@ -21,7 +21,7 @@ console.log(result4); // 6
 console.log(typeof result4); // number
 
 
-// 2. Explicit conversion
+// 2. Explicit coercion
 // 2-1. Boolean
 console.log(Boolean(0)); // false
 console.log(Boolean("")); // false
