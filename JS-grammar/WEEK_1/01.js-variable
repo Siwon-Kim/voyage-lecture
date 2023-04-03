@@ -1,0 +1,19 @@
+// Variable, Constant
+// save in memory, reuse by reading from memory
+
+// How to declare a variable
+// 1. var
+var myVar = "Hello World";
+var myVar = "Hello World1"; // able to re-declare
+console.log(myVar);
+
+// 2. let
+let myLet = "Hello World1";
+// let myLet = "Hello World2"; // not able to re-declare
+console.log(myLet);
+
+// 3. const
+const myConst = "Hello World2";
+// const myConst = "Hello World3"; // not able to re-declare
+// myConst = "Hello World4"; // not able to re-assign
+console.log(myConst);
