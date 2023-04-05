@@ -84,3 +84,9 @@ car2.getModelYear();
 const car3 = new Car("Tucson", 2017, "SUV", 3000);
 car3.makeNoise();
 car3.getModelYear();
+
+// getters
+console.log(car1.modelName);
+// setters
+car1.modelName = "Soranto";
+console.log(car1.modelName);
