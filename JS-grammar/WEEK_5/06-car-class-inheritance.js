@@ -48,9 +48,11 @@ class ElectricCar extends Car {
     }
 }
 
-const electricCar1 = new ElectricCar("Kona", 2019, "SUV", 5000, 100);
-const electricCar2 = new ElectricCar("Tesla", 2018, "SUV", 9000, 100);
+const electricCar1 = new ElectricCar("Kona", 2019, 5000, 100);
+const electricCar2 = new ElectricCar("Tesla", 2018, 9000, 100);
 electricCar1.makeNoise();
 electricCar1.chargeBattery();
+console.log(electricCar1.batteryCapacity);
 electricCar2.makeNoise();
 electricCar2.chargeBattery();
+console.log(electricCar2.batteryCapacity);
