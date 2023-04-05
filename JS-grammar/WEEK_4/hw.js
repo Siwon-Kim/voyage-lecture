@@ -6,7 +6,7 @@ class HttpError extends Error {
 	}
 }
 
-async function loadJson(url) {
+let loadJson = async (url) => {
 	let response = await fetch(url);
 	if (response.status == 200) {
 		return response.json();
@@ -15,7 +15,7 @@ async function loadJson(url) {
 	}
 }
 
-async function narutoIsNotOtaku() {
+let narutoIsNotOtaku = async () => {
 	let title, res;
 
 	// wait until the user enters something in the prompt
