@@ -25,7 +25,11 @@ car2.getModelYear();
 class ElectricCar extends Car {
     constructor(modelName, modelYear, price, batteryCapacity) {
         super(modelName, modelYear, 'Electric Car', price);
-        this._batteryCapacity = batteryCapacity; // getter
+        this._batteryCapacity = batteryCapacity;
+    }
+
+    get batteryCapacity() {
+        return this._batteryCapacity;
     }
 
     set batteryCapacity(value) {
