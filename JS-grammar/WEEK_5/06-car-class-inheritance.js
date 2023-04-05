@@ -25,7 +25,18 @@ car2.getModelYear();
 class ElectricCar extends Car {
     constructor(modelName, modelYear, price, batteryCapacity) {
         super(modelName, modelYear, 'Electric Car', price);
-        this.batteryCapacity = batteryCapacity;
+        this._batteryCapacity = batteryCapacity; // getter
+    }
+
+    set batteryCapacity(value) {
+        if (value < 0) {
+            console.log("Battery capacity must be positive.");
+            return;
+        } else if (typeof value !== "number") {
+            console.log("Battery capacity must be a number.");
+            return;
+        }
+        this._batteryCapacity = value;
     }
 
     chargeBattery() {
