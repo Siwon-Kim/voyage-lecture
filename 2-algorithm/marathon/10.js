@@ -1,5 +1,6 @@
 function solution(arr1, arr2) {
-	var answer = [];
+	// Initialize the array
+    var answer = [];
 
 	for (let i = 0; i < arr1.length; i++) {
 		answer.push([]);
