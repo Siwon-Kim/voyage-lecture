@@ -9,3 +9,6 @@ process.stdin.on('data', data => {
         process.stdout.write("\n")
     }
 });
+
+// console.log() : always line breaking after execution
+// process.stdout.write() : no line breaking
