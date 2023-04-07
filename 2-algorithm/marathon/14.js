@@ -15,3 +15,5 @@ function solution(arr, divisor) {
 
 	return answer;
 }
+
+// loadsh -> _.sortBy(arr)
