@@ -10,16 +10,17 @@ function findPrimeNum() {
 	for (let i = 2; i <= len; i++) {
 		primeArr.push(null);
 	}
+    console.log(primeArr);
 	// 소수인지 판별하는 반복문
 	for (let i = 2; i <= len; i++) {
 		// 배열의 값이 null 일때 true로 바꿔주고
 		if (primeArr[i] == null) {
-			// primeArr[i] = true;
-            primeArr.splice(i, 1, true)
+			primeArr[i] = true;
+            // primeArr.splice(i, 1, true)
 			// 소수인거 발견 하면 i = n*n 부터 끝까지 i += n
 			for (let j = i * i; j <= len; j += i) {
-				// primeArr[i] = false;
-                primeArr.splice(j, 1, false)
+				primeArr[j] = false;
+                // primeArr.splice(j, 1, false)
 			}
 		}
 	}
