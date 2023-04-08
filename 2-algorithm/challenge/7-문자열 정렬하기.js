@@ -1,4 +1,3 @@
-
 function solution(strings, n) {
     strings.sort((a, b) => {
         // return -1: swap

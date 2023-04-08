@@ -1,5 +1,3 @@
-// let prevE
-// 
 function solution(arr) {
     let prevElem = -1
     let newArr = []
