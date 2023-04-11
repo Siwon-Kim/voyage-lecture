@@ -12,7 +12,6 @@ function solution(sizes) {
         if (e[0] > wMax) { // 세로 최댓값
             wMax = e[0]
         }
-        
 	});
 	return wMax * hMax;
 }
