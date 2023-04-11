@@ -1,4 +1,5 @@
 function solution(dartResult) {
-    var answer = 0;
-    return answer;
+    let answer = 0;
+    
 }
+solution('1S2D*3T')
