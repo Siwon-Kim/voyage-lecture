@@ -1,30 +1,17 @@
 function findChanges(price) {
 	const payment = 1000;
 	const changes = [500, 100, 50, 10];
-	let [countChanges, diff] = [0, payment - price];
+	let [countChanges, left] = [0, payment - price];
 
-	while (diff !== 0) {
-		// 500원 체크
-		countChanges += Math.floor(diff / 500);
-		diff = diff % 500;
+	// 축적기로 사용할 수 있는 reduce를 통해 각 동전의 종류를 순회하며 거스름돈의 개수를 누적시킨다
+    countChanges = changes.reduce((acc, change) => {
+		// 기존 값에 현재 동전 종류의 값을, 거슬러주어야 하는 값으로 나눈 몫을 더한다
+        let accTotal = acc + Math.floor(left / change);
 
-		// 100원 체크
-		countChanges += Math.floor(diff / 100);
-		diff = diff % 100;
-
-		// 50원 체크
-		countChanges += Math.floor(diff / 50);
-		diff = diff % 50;
-
-		// 10원 체크
-		countChanges += Math.floor(diff / 10);
-		diff = diff % 10;
-	}
-    // countChanges = changes.reduce((acc, change) => {
-    //     let accTotal = acc + Math.floor(diff / change);
-    //     diff = diff % change;
-    //     return accTotal;
-    // })
+		// 아직 남아있는 거스름돈을 나머지값으로 갱신한다
+        left = left % change;
+        return accTotal;
+    }, 0)
     
 	return countChanges;
 }
