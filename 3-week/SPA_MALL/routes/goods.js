@@ -74,24 +74,20 @@ router.put("/goods/:goodsId/cart", async (req, res) => {
 			{ goodsId: Number(goodsId) },
 			{ $set: { quantity } }
 		);
-		res.json({ result: "quantity has been changed successfully!" });
-	} else {
-		res.status(400).json({ result: "goods not found" });
 	}
+	res.status(200).json({ result: true });
 });
 
 // 카트 상품 삭제 API
-router.delete('/goods/:goodsId/cart', async (req, res) => {
+router.delete("/goods/:goodsId/cart", async (req, res) => {
 	const { goodsId } = req.params;
 
 	const existingCart = await Cart.find({ goodsId: Number(goodsId) });
 
 	if (existingCart.length) {
 		await Cart.deleteOne({ goodsId: Number(goodsId) });
-		res.json({ result: "goods has been deleted successfully!" });
-	} else {
-		res.status(400).json({ result: "goods not found" });
 	}
+	res.status(200).json({ result: true });
 });
 
 module.exports = router;
