@@ -18,7 +18,7 @@ router.post("/auth", async (req, res) => {
 
 	// 3. create JWT and send to cookie & body
 	const token = jwt.sign({ userId: existingUser.userId }, SECRET_KEY);
-	res.cookie("Authorization", "Bearer" + token);
+	res.cookie("Authorization", `Bearer ${token}`);
 	return res.status(200).json({ token });
 });
 
