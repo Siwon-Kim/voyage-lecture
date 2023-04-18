@@ -20,6 +20,9 @@ const goodsSchema = new mongoose.Schema({
 	price: {
 		type: Number,
 	},
+	createdAt: {
+
+	}
 });
 
 module.exports = mongoose.model("Goods", goodsSchema); // "Goods": collection name

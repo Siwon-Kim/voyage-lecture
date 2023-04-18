@@ -7,7 +7,22 @@ const Cart = require("../schemas/cart.js");
 // 상품 목록 조회 API
 router.get("/goods", async (req, res) => {
 	const goods = await Goods.find({});
-	res.json({ goods: goods });
+	res.json({ goods });
+});
+
+// 카트 목록 조회 API
+router.get("/goods/cart", async (req, res) => {
+	const carts = await Cart.find({});
+	const goodsIds = carts.map((cart) => cart.goodsId);
+
+	const goods = await Goods.find({ goodsId: goodsIds });
+
+	res.json({
+		carts: carts.map((cart) => ({
+			quantity: cart.quantity,
+			goods: goods.find((item) => item.goodsId === cart.goodsId),
+		})),
+	});
 });
 
 // 상품 상세 조회 API
@@ -41,6 +56,8 @@ router.post("/goods", async (req, res) => {
 	res.json({ goods: createdGoods });
 });
 
+
+
 // 카트에 상품 추가 API
 router.post("/goods/:goodsId/cart", async (req, res) => {
 	const { quantity } = req.body;
@@ -66,6 +83,12 @@ router.post("/goods/:goodsId/cart", async (req, res) => {
 router.put("/goods/:goodsId/cart", async (req, res) => {
 	const { goodsId } = req.params;
 	const { quantity } = req.body;
+
+	if (quantity < 1) {
+		return res
+			.status(400)
+			.json({ errorMessage: "수량은 1 이상이어야 합니다." });
+	}
 
 	const existingCart = await Cart.find({ goodsId: Number(goodsId) });
 
