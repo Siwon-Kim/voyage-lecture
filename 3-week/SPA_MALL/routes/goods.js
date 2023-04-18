@@ -5,9 +5,26 @@ const Goods = require("../schemas/goods.js");
 const Cart = require("../schemas/cart.js");
 
 // 상품 목록 조회 API
+// query string: ?category=drink
 router.get("/goods", async (req, res) => {
-	const goods = await Goods.find({});
-	res.json({ goods });
+	const { category } = req.query;
+
+	// 전체 category를 조회하면 {}으로 find하는 부분 처리
+	const goods = await Goods.find(category ? { category } : {})
+		.sort("-date")
+		.exec();
+
+	const results = goods.map((item) => {
+		return {
+			goodsId: item.goodsId,
+			name: item.name,
+			price: item.price,
+			thumbnailUrl: item.thumbnailUrl,
+			category: item.category,
+		};
+	});
+
+	res.json({ goods: results });
 });
 
 // 카트 목록 조회 API
@@ -27,10 +44,20 @@ router.get("/goods/cart", async (req, res) => {
 
 // 상품 상세 조회 API
 router.get("/goods/:goodsId", async (req, res) => {
-	let { goodsId } = req.params;
-	const goods = await Goods.find({});
-	let [detail] = goods.filter((goods) => Number(goodsId) === goods.goodsId);
-	res.json({ detail });
+	const { goodsId } = req.params;
+
+	// 전체 category를 조회하면 {}으로 find하는 부분 처리
+	const goods = await Goods.findOne({ goodsId }).exec();
+
+	const result = {
+		goodsId: goods.goodsId,
+		name: goods.name,
+		price: goods.price,
+		thumbnailUrl: goods.thumbnailUrl,
+		category: goods.category,
+	};
+
+	res.status(200).json({ goods: result });
 });
 
 // 상품 추가 API
@@ -55,8 +82,6 @@ router.post("/goods", async (req, res) => {
 	});
 	res.json({ goods: createdGoods });
 });
-
-
 
 // 카트에 상품 추가 API
 router.post("/goods/:goodsId/cart", async (req, res) => {

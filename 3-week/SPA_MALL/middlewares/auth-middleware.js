@@ -18,7 +18,6 @@ module.exports = async (req, res, next) => {
 		return;
 	}
 
-    console.log(authType);
 	// 3. authToken validation -> 실패시 server error -> try-catch문으로 에러핸들링
 	// 3-1. authToken 만료되었는지
 	// 3-2. authToken이 서버가 발급한 토큰이 맞는지 검증

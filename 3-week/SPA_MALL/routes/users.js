@@ -20,7 +20,7 @@ router.get("/users/me", authMiddleware, async (req, res) => {
 // 회원가입 API
 router.post("/users", async (req, res) => {
 	const { email, nickname, password, confirmPassword } = req.body;
-	console.log(email);
+
 	// 1. password validation
 	if (password !== confirmPassword) {
 		res.status(400).json({
